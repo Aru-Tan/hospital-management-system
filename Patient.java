@@ -5,6 +5,7 @@ public class Patient {
     private int age;
     private String bloodType;
 
+    // Constructor
     public Patient(int patientId, String fullName, int age, String bloodType) {
         this.patientId = patientId;
         this.fullName = fullName;
@@ -12,10 +13,41 @@ public class Patient {
         this.bloodType = bloodType;
     }
 
+    // Getters
+    public int getPatientId() {
+        return patientId;
+    }
+
     public String getFullName() {
         return fullName;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    // Setters
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
+    }
+
+    // Methods (logic)
     public boolean isMinor() {
         return age < 18;
     }
@@ -29,8 +61,8 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
-                "id=" + patientId +
-                ", name='" + fullName + '\'' +
+                "patientId=" + patientId +
+                ", fullName='" + fullName + '\'' +
                 ", age=" + age +
                 ", bloodType='" + bloodType + '\'' +
                 '}';
