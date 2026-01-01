@@ -5,7 +5,6 @@ public class Patient {
     private int age;
     private String bloodType;
 
-    // Constructor
     public Patient(int patientId, String fullName, int age, String bloodType) {
         this.patientId = patientId;
         this.fullName = fullName;
@@ -13,7 +12,6 @@ public class Patient {
         this.bloodType = bloodType;
     }
 
-    // Getters
     public int getPatientId() {
         return patientId;
     }
@@ -30,7 +28,6 @@ public class Patient {
         return bloodType;
     }
 
-    // Setters
     public void setPatientId(int patientId) {
         this.patientId = patientId;
     }
@@ -47,7 +44,6 @@ public class Patient {
         this.bloodType = bloodType;
     }
 
-    // Methods (logic)
     public boolean isMinor() {
         return age < 18;
     }

@@ -5,7 +5,6 @@ public class Doctor {
     private String specialization;
     private int experienceYears;
 
-    // Constructor
     public Doctor(int doctorId, String name, String specialization, int experienceYears) {
         this.doctorId = doctorId;
         this.name = name;
@@ -13,7 +12,6 @@ public class Doctor {
         this.experienceYears = experienceYears;
     }
 
-    // Getters
     public int getDoctorId() {
         return doctorId;
     }
@@ -30,7 +28,6 @@ public class Doctor {
         return experienceYears;
     }
 
-    // Setters
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
     }
@@ -47,7 +44,6 @@ public class Doctor {
         this.experienceYears = experienceYears;
     }
 
-    // Methods (logic)
     public boolean isExperienced() {
         return experienceYears >= 10;
     }

@@ -6,7 +6,6 @@ public class Appointment {
     private String date;
     private String status;
 
-    // Constructor
     public Appointment(int appointmentId, String patientName, String doctorName, String date) {
         this.appointmentId = appointmentId;
         this.patientName = patientName;
@@ -15,7 +14,6 @@ public class Appointment {
         this.status = "Scheduled";
     }
 
-    // Getters
     public int getAppointmentId() {
         return appointmentId;
     }
@@ -36,7 +34,6 @@ public class Appointment {
         return status;
     }
 
-    // Setters
     public void setAppointmentId(int appointmentId) {
         this.appointmentId = appointmentId;
     }
@@ -57,7 +54,6 @@ public class Appointment {
         this.status = status;
     }
 
-    // Methods (logic)
     public void reschedule(String newDate) {
         this.date = newDate;
         this.status = "Rescheduled";
