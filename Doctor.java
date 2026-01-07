@@ -1,23 +1,30 @@
-public class Doctor {
+public class Doctor extends Person {
 
-    private int doctorId;
-    private String name;
     private String specialization;
     private int experienceYears;
 
-    public Doctor(int doctorId, String name, String specialization, int experienceYears) {
-        this.doctorId = doctorId;
-        this.name = name;
+    public Doctor(int id, String name, int age, String phone, String specialization, int experienceYears) {
+        super(id, name, age, phone); // super() first
         this.specialization = specialization;
         this.experienceYears = experienceYears;
     }
 
-    public int getDoctorId() {
-        return doctorId;
+    @Override
+    public String getRole() {
+        return "Doctor";
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public void work() {
+        System.out.println(name + " is treating patients (" + specialization + ").");
+    }
+
+    public boolean isExperienced() {
+        return experienceYears >= 10;
+    }
+
+    public boolean canPerformSurgery() {
+        return specialization != null && specialization.equalsIgnoreCase("Surgeon");
     }
 
     public String getSpecialization() {
@@ -28,14 +35,6 @@ public class Doctor {
         return experienceYears;
     }
 
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
     }
@@ -44,21 +43,10 @@ public class Doctor {
         this.experienceYears = experienceYears;
     }
 
-    public boolean isExperienced() {
-        return experienceYears >= 10;
-    }
-
-    public boolean canPerformSurgery() {
-        return specialization.equalsIgnoreCase("Surgeon");
-    }
-
     @Override
     public String toString() {
-        return "Doctor{" +
-                "doctorId=" + doctorId +
-                ", name='" + name + '\'' +
-                ", specialization='" + specialization + '\'' +
-                ", experienceYears=" + experienceYears +
-                '}';
+        return getRole() + " {" + basicInfo() +
+                ", Specialization: " + specialization +
+                ", ExperienceYears: " + experienceYears + "}";
     }
 }

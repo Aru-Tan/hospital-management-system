@@ -1,47 +1,20 @@
-public class Patient {
+public class Patient extends Person {
 
-    private int patientId;
-    private String fullName;
-    private int age;
     private String bloodType;
 
-    public Patient(int patientId, String fullName, int age, String bloodType) {
-        this.patientId = patientId;
-        this.fullName = fullName;
-        this.age = age;
+    public Patient(int id, String name, int age, String phone, String bloodType) {
+        super(id, name, age, phone); // super() first
         this.bloodType = bloodType;
     }
 
-    public int getPatientId() {
-        return patientId;
+    @Override
+    public String getRole() {
+        return "Patient";
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getBloodType() {
-        return bloodType;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
+    @Override
+    public void work() {
+        System.out.println(name + " is getting treatment.");
     }
 
     public boolean isMinor() {
@@ -54,13 +27,16 @@ public class Patient {
         else return "Senior";
     }
 
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
+    }
+
     @Override
     public String toString() {
-        return "Patient{" +
-                "patientId=" + patientId +
-                ", fullName='" + fullName + '\'' +
-                ", age=" + age +
-                ", bloodType='" + bloodType + '\'' +
-                '}';
+        return getRole() + " {" + basicInfo() + ", BloodType: " + bloodType + "}";
     }
 }
