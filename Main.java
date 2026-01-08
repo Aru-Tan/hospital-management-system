@@ -62,7 +62,7 @@ public class Main {
 
     static void showMenu() {
         System.out.println("\n========================================");
-        System.out.println("           HOSPITAL SYSTEM (Week 4)");
+        System.out.println("           HOSPITAL SYSTEM (Week 3+4)");
         System.out.println("========================================");
         System.out.println("1. Add Person (Parent Object)");
         System.out.println("2. Add Patient (Child Type 1)");
@@ -79,10 +79,7 @@ public class Main {
     }
 
     static void seedData() {
-        // parent object
         people.add(new Person(1, "Sam", 30, "+77000000001"));
-
-        // children objects in the SAME list (polymorphism)
         people.add(new Patient(2, "Aruzhan T.", 17, "+77000000002", "O+"));
         people.add(new Doctor(3, "Dr. Ali", 40, "+77000000003", "Surgeon", 12));
 
@@ -96,7 +93,7 @@ public class Main {
             scanner.nextLine();
         }
         int value = scanner.nextInt();
-        scanner.nextLine(); // important
+        scanner.nextLine();
         return value;
     }
 
@@ -106,7 +103,7 @@ public class Main {
     }
 
     static void addPerson() {
-        System.out.println("\n--- ADD PERSON (Parent) ---");
+        System.out.println("\n--- ADD PERSON ---");
         int id = readInt("ID: ");
         String name = readLine("Name: ");
         int age = readInt("Age: ");
@@ -117,21 +114,21 @@ public class Main {
     }
 
     static void addPatient() {
-        System.out.println("\n--- ADD PATIENT (Child) ---");
+        System.out.println("\n--- ADD PATIENT ---");
         int id = readInt("ID: ");
         String name = readLine("Full name: ");
         int age = readInt("Age: ");
         String phone = readLine("Phone: ");
         String blood = readLine("Blood type: ");
 
-        Person p = new Patient(id, name, age, phone, blood); // parent reference
+        Person p = new Patient(id, name, age, phone, blood);
         people.add(p);
 
         System.out.println("Patient added.");
     }
 
     static void addDoctor() {
-        System.out.println("\n--- ADD DOCTOR (Child) ---");
+        System.out.println("\n--- ADD DOCTOR ---");
         int id = readInt("ID: ");
         String name = readLine("Name: ");
         int age = readInt("Age: ");
@@ -139,7 +136,7 @@ public class Main {
         String spec = readLine("Specialization: ");
         int exp = readInt("Experience years: ");
 
-        Person d = new Doctor(id, name, age, phone, spec, exp); // parent reference
+        Person d = new Doctor(id, name, age, phone, spec, exp);
         people.add(d);
 
         System.out.println("Doctor added.");
@@ -151,7 +148,6 @@ public class Main {
             System.out.println("No people found.");
             return;
         }
-
         for (int i = 0; i < people.size(); i++) {
             System.out.println((i + 1) + ") " + people.get(i));
         }
@@ -163,7 +159,6 @@ public class Main {
             System.out.println("No people found.");
             return;
         }
-
         for (int i = 0; i < people.size(); i++) {
             Person x = people.get(i);
             System.out.print(x.getRole() + ": ");
@@ -175,9 +170,7 @@ public class Main {
         System.out.println("\n--- VIEW BY TYPE ---");
         System.out.println("1. Only Patients");
         System.out.println("2. Only Doctors");
-        System.out.print("Choose: ");
-
-        int option = readInt("");
+        int option = readInt("Choose: ");
 
         if (option == 1) {
             System.out.println("\n--- PATIENTS ---");
@@ -221,7 +214,6 @@ public class Main {
             System.out.println("No appointments found.");
             return;
         }
-
         for (int i = 0; i < appointments.size(); i++) {
             System.out.println((i + 1) + ") " + appointments.get(i));
         }

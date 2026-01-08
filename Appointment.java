@@ -7,11 +7,11 @@ public class Appointment {
     private String status;
 
     public Appointment(int appointmentId, String patientName, String doctorName, String date) {
-        this.appointmentId = appointmentId;
-        this.patientName = patientName;
-        this.doctorName = doctorName;
-        this.date = date;
-        this.status = "Scheduled";
+        setAppointmentId(appointmentId);
+        setPatientName(patientName);
+        setDoctorName(doctorName);
+        setDate(date);
+        setStatus("Scheduled");
     }
 
     public int getAppointmentId() { return appointmentId; }
@@ -20,19 +20,67 @@ public class Appointment {
     public String getDate() { return date; }
     public String getStatus() { return status; }
 
-    public void setAppointmentId(int appointmentId) { this.appointmentId = appointmentId; }
-    public void setPatientName(String patientName) { this.patientName = patientName; }
-    public void setDoctorName(String doctorName) { this.doctorName = doctorName; }
-    public void setDate(String date) { this.date = date; }
-    public void setStatus(String status) { this.status = status; }
+    public void setAppointmentId(int appointmentId) {
+        if (appointmentId > 0) this.appointmentId = appointmentId;
+        else {
+            System.out.println("Invalid appointment ID. Setting appointmentId = 1");
+            this.appointmentId = 1;
+        }
+    }
+
+    public void setPatientName(String patientName) {
+        if (patientName != null && !patientName.trim().isEmpty()) this.patientName = patientName.trim();
+        else {
+            System.out.println("Invalid patient name. Setting patientName = Unknown");
+            this.patientName = "Unknown";
+        }
+    }
+
+    public void setDoctorName(String doctorName) {
+        if (doctorName != null && !doctorName.trim().isEmpty()) this.doctorName = doctorName.trim();
+        else {
+            System.out.println("Invalid doctor name. Setting doctorName = Unknown");
+            this.doctorName = "Unknown";
+        }
+    }
+
+    public void setDate(String date) {
+        if (date != null && !date.trim().isEmpty()) this.date = date.trim();
+        else {
+            System.out.println("Invalid date. Setting date = Unknown");
+            this.date = "Unknown";
+        }
+    }
+
+    public void setStatus(String status) {
+        if (status == null) {
+            this.status = "Scheduled";
+            return;
+        }
+        String s = status.trim();
+        if (s.equalsIgnoreCase("Scheduled") ||
+                s.equalsIgnoreCase("Rescheduled") ||
+                s.equalsIgnoreCase("Cancelled")) {
+            this.status = capitalize(s);
+        } else {
+            System.out.println("Invalid status. Setting status = Scheduled");
+            this.status = "Scheduled";
+        }
+    }
 
     public void reschedule(String newDate) {
-        this.date = newDate;
-        this.status = "Rescheduled";
+        setDate(newDate);
+        setStatus("Rescheduled");
     }
 
     public void cancel() {
-        this.status = "Cancelled";
+        setStatus("Cancelled");
+    }
+
+    private String capitalize(String s) {
+        if (s.isEmpty()) return s;
+        String lower = s.toLowerCase();
+        return Character.toUpperCase(lower.charAt(0)) + lower.substring(1);
     }
 
     @Override

@@ -3,8 +3,8 @@ public class Patient extends Person {
     private String bloodType;
 
     public Patient(int id, String name, int age, String phone, String bloodType) {
-        super(id, name, age, phone); // super() first
-        this.bloodType = bloodType;
+        super(id, name, age, phone);
+        setBloodType(bloodType);
     }
 
     @Override
@@ -32,7 +32,11 @@ public class Patient extends Person {
     }
 
     public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
+        if (bloodType != null && !bloodType.trim().isEmpty()) this.bloodType = bloodType.trim();
+        else {
+            System.out.println("Invalid blood type. Setting blood type = Unknown");
+            this.bloodType = "Unknown";
+        }
     }
 
     @Override
